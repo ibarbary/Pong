@@ -10,10 +10,10 @@ using namespace std;
 bool gameOver;
 string winner;
 int score1, score2;
-int length = 20;
+int height = 20;
 int width = 60;
-int px; //x axis(length) of both p1 & p2
-int p1y, p2y; //y axis(width)
+int px; 
+int p1y, p2y;
 vector<int>p1;
 vector<int>p2;
               //left  right upleft upright downleft downright
@@ -30,7 +30,7 @@ public:
 
     void reset()
     {
-        x = length/2;
+        x = height/2;
         y = width/2;
     }
 
@@ -71,9 +71,9 @@ public:
 void Setup()
 {
     gameOver = false;
-    px = length/2;
-    p1y = 2;
-    p2y = width-1;
+    px = height/2;
+    p1y = 2;       //p1 on the left
+    p2y = width-1; //p2 on the right
     score1 = 0;
     score2 = 0;
 
@@ -91,7 +91,7 @@ void Draw()
     cout<<"#";
 
     cout<<endl;
-    for(int i=1; i<=length; ++i)
+    for(int i=1; i<=height; ++i)
     {
         for(int j=1; j<=width; ++j)
         {
@@ -159,7 +159,7 @@ void Action()
             }
             case 's':
             {
-                if(p1[p1.size()-1] != length)
+                if(p1[p1.size()-1] != height)
                 {
                    for(auto &x: p1)++x;
                 }
@@ -176,7 +176,7 @@ void Action()
             }
             case 'k':
             {
-                if(p2[p2.size()-1] != length)
+                if(p2[p2.size()-1] != height)
                 {
                     for(auto &x: p2)++x;
                 }
@@ -217,7 +217,7 @@ void checkBall()
         else if(ballDirection == 'e')
         ballDirection = 'c';
     }
-    else if(b.x > length)
+    else if(b.x > height)
     {
         if(ballDirection == 'c')
         ballDirection = 'e';
